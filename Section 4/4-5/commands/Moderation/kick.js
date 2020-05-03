@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports.run = (client, message, args) => {
   let user = message.mentions.users.first();
   let reason = (args.splice(1).join(' ') || 'Aucune raison spécifiée');
-  message.guild.member(user).kick(reason);
+  user ? message.guild.member(user).kick(reason) : message.channel.send("L'utilisateur n'existe pas.");
 
   const embed = new MessageEmbed()
     .setAuthor(`${user.username} (${user.id})`)
