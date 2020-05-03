@@ -1,33 +1,29 @@
-const { MessageEmbed } = require("discord.js");
 const ms = require("ms");
+const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
   let user = message.guild.member(message.mentions.users.first());
   let muteRole = message.guild.roles.cache.find(r => r.name === 'muted');
+  let muteTime = (args[1] || '60s');
 
   if (!muteRole) {
-    try {
-      muteRole = await message.guild.roles.create({
-        data: {
-          name: 'muted',
-          color: '#000',
-          permissions: []
-        }
-      });
+    muteRole = await message.guild.roles.create({
+      data: {
+        name: 'muted',
+        color: '#000',
+        permissions: []
+      }
+    });
 
-      message.guild.channels.cache.forEach(async (channel, id) => {
-        await channel.updateOverwrite(muteRole, {
-          SEND_MESSAGES: false,
-          ADD_REACTIONS: false,
-          CONNECT: false
-        });
+    message.guild.channels.cache.forEach(async (channel, id) => {
+      await channel.updateOverwrite(muteRole, {
+        SEND_MESSAGES: false,
+        ADD_REACTIONS: false,
+        CONNECT: false
       });
-    } catch (e) {
-      console.log(e.stack);
-    }
+    });
   };
 
-  let muteTime = (args[1] || '60s');
   await user.roles.add(muteRole.id);
   message.channel.send(`<@${user.id}> est muté pour ${ms(ms(muteTime))}.`);
 
@@ -36,10 +32,9 @@ module.exports.run = async (client, message, args) => {
   }, ms(muteTime));
 
   const embed = new MessageEmbed()
-    .setAuthor(`${user.username} (${user.id})`)
+    .setAuthor(`${user.user.username} (${user.id})`, user.user.avatarURL())
     .setColor("#ffa500")
     .setDescription(`**Action**: mute\n**Temps**: ${ms(ms(muteTime))}`)
-    .setThumbnail(user.avatarURL())
     .setTimestamp()
     .setFooter(message.author.username, message.author.avatarURL());
     
