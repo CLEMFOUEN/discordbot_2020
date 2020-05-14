@@ -1,2 +1,10 @@
-exports.TOKEN = "token";
-exports.PREFIX = "?";
+module.exports = {
+  TOKEN: "token",
+  PREFIX: "?",
+  DBCONNECTION: "mongodb://localhost:27017/test",
+  DEFAULTSETTINGS: {
+    prefix: "?",
+    logChannel: "bot-logs",
+    welcomeMessage: "Welcome {{user}}"
+  }
+}
