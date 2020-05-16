@@ -4,7 +4,7 @@ const MESSAGES = {
       EVAL: {
         name: "eval",
         aliases: ['eval'],
-        category: 'eval',
+        category: 'admin',
         description: "Tester un code javascript",
         cooldown: 3,
         usage: '<code_to_test>',

@@ -1,0 +1,10 @@
+module.exports = {
+  TOKEN: "token",
+  PREFIX: "?",
+  DBCONNECTION: "<user>+<password> from mongodb cloud",
+  DEFAULTSETTINGS: {
+    prefix: "?",
+    logChannel: "bot-logs",
+    welcomeMessage: "Welcome {{user}}"
+  }
+}
