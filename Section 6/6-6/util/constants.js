@@ -2,8 +2,8 @@ const MESSAGES = {
   COMMANDS: {
     ADMIN: {
       CONFIG: {
-        name: "config",
-        aliases: ['config'],
+        name: "configdb",
+        aliases: ['configdb'],
         category: 'admin',
         description: "Modifier la base de données",
         cooldown: 3,
