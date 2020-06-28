@@ -1,0 +1,12 @@
+module.exports = {
+  TOKEN: "token",
+  DBCONNECTION: "<user>+<password> from mongodb cloud",
+  LAVALINK_HOST: "localhost",
+  LAVALINK_PORT: 8000,
+  LAVALINK_PASSWORD: "idkpassword",
+  DEFAULTSETTINGS: {
+    prefix: "?",
+    logChannel: "bot-logs",
+    welcomeMessage: "Welcome {{user}}"
+  }
+}
